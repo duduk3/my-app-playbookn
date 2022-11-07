@@ -1,20 +1,30 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import Routes from './src/routes';
 
-export default function App() {
+import { Amplify } from 'aws-amplify';
+
+
+import awsExports from "./src/aws-exports";
+Amplify.configure(awsExports);
+
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+    <SafeAreaView style={styles.root}>
+      <Routes/>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
+export default App;
+
 const styles = StyleSheet.create({
-  container: {
+  root: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#D4DAA4',
+    paddingVertical: 20,
   },
 });
